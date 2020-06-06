@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="ProgramParamListHelper.ProgramParamListView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:ProgramParamListHelper"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             x:Name="PPLControl"
+             d:DataContext="{d:DesignInstance Type=local:ProgramParamListView,
+                                              IsDesignTimeCreatable=True}"
+             d:DesignHeight="200" d:DesignWidth="400" mc:Ignorable="d">
+
+    <Border>
+        <DataGrid AutoGenerateColumns="False" ItemsSource="{Binding Path=PPVMs, ElementName=PPLControl}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding ParamName}">
+                    <DataGridTextColumn.Header>
+                        <TextBlock Text="Nome" />
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+                <DataGridTextColumn Width="*" Binding="{Binding ParamDesc}">
+                    <DataGridTextColumn.Header>
+                        <TextBlock Text="Descrizione" />
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding ParamVal}">
+                    <DataGridTextColumn.Header>
+                        <TextBlock Text="Valore" />
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+    </Border>
+</UserControl>

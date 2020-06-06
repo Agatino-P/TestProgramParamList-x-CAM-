@@ -1,0 +1,26 @@
+﻿<Window x:Class="TestProgramParamList.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:ProgramParamListHelper="clr-namespace:ProgramParamListHelper;assembly=ProgramParamListHelper"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:TestProgramParamList"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        Title="MainWindow" Width="800" Height="450"
+        d:DataContext="{d:DesignInstance IsDesignTimeCreatable=True,
+                                         Type={x:Type local:MainWindowViewModel}}"
+        mc:Ignorable="d">
+    <Window.DataContext>
+        <local:MainWindowViewModel />
+    </Window.DataContext>
+    <DockPanel Margin="3">
+        <UniformGrid Height="30" DockPanel.Dock="Bottom" Rows="1">
+            <Button Margin="3"
+                    Command="{Binding CopyToRightCmd}"
+                    Content="Copy to ..." />
+        </UniformGrid>
+        <UniformGrid Columns="2" DockPanel.Dock="Top" Rows="1">
+            <ProgramParamListHelper:ProgramParamListView Margin="3" PPL="{Binding PPL}" />
+            <ListBox Margin="3" ItemsSource="{Binding CopedTo}" />
+        </UniformGrid>
+    </DockPanel>
+</Window>
